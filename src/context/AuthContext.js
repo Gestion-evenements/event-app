@@ -13,10 +13,23 @@ export const AuthProvider = ({ children }) => {
     return false;
   };
  */
-  const login = (email, password) => {
+  /* const login = (email, password) => {
     setUser({ email });
     return true;
+  }; */
+
+  const login = (email, password) => {
+    let role = "user";
+    
+    // Vérifie si c'est l'admin
+    if (email === "admin@site.com" && password === "admin123") {
+      role = "admin";
+    }
+  
+    setUser({ email, role });
+    return true;
   };
+  
   
 
   const logout = () => {

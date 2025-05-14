@@ -18,6 +18,9 @@ const Register = () => {
     localStorage.setItem("userEmail", email);
     localStorage.setItem("userPassword", password);
 
+    // Le rôle est toujours "user" à l'inscription
+    localStorage.setItem("userRole", "user");
+
     alert("Inscription réussie !");
     navigate("/login");
   };

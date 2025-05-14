@@ -13,15 +13,18 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const storedEmail = localStorage.getItem("userEmail");
-    const storedPassword = localStorage.getItem("userPassword");
+    const savedEmail = localStorage.getItem("userEmail");
+    const savedPassword = localStorage.getItem("userPassword");
 
-    if (email === storedEmail && password === storedPassword) {
-      alert("Connexion réussie !");
-      login(email, password); // met à jour le contexte Auth
+    if (email === "admin@site.com" && password === "admin123") {
+      login(email, password); // Cela va automatiquement mettre le rôle admin
+      navigate("/admin");
+    } else if (email === savedEmail && password === savedPassword) {
+      const role = localStorage.getItem("userRole") || "user";
+      login(email, password); // Dans le contexte, le rôle sera toujours "user" pour les inscrits
       navigate("/dashboard");
     } else {
-      alert("Email ou mot de passe incorrect !");
+      alert("Email ou mot de passe incorrect");
     }
   };
 
